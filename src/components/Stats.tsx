@@ -12,10 +12,16 @@ const PokemonCard: React.FunctionComponent<StatsProps> = ({
   weight,
 }) => {
   return (
-    <div className="bg-orange-100 flex p-1 rounded-b-lg">
-      <div className="w-1/3">ID: {id}</div>
-      <div className="w-1/3">Height: {height}</div>
-      <div className="w-1/3">Weight: {weight}</div>
+    <div className="bg-orange-100 flex p-1 rounded-b-lg text-sm">
+      <div className="w-1/3">
+        <span className="font-semibold">ID:</span> {id}
+      </div>
+      <div className="w-1/3">
+        <span className="font-semibold">Height:</span> {height}
+      </div>
+      <div className="w-1/3">
+        <span className="font-semibold">Weight:</span> {weight}
+      </div>
     </div>
   );
 };

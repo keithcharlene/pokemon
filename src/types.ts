@@ -13,7 +13,7 @@ interface Item {
   item: NameUrlPair;
 }
 
-interface Move {
+export interface Move {
   move: NameUrlPair;
 }
 

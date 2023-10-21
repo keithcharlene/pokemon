@@ -1,3 +1,5 @@
+import Image from "./Image";
+import Moves from "./Moves";
 import { Pokemon } from "../types";
 import React from "react";
 import Stats from "./Stats";
@@ -5,6 +7,9 @@ import Stats from "./Stats";
 interface PokemonCardProps {
   pokemon: Pokemon;
 }
+const capitalizeFirstLetter = (name: string) => {
+  return name[0].toUpperCase() + name.slice(1);
+};
 
 const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
   pokemon,
@@ -12,15 +17,22 @@ const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
   if (pokemon) {
     return (
       <div className="pokemonCard bg-red-400 p-5 m-2 ">
-        {/* <img
-          src={pokemon.sprites.other.dream_world.front_default}
-          alt={`${pokemon.name} illustration`}
-        /> */}
+        <p className="text-2xl pb-2 font-semibold">
+          {capitalizeFirstLetter(pokemon.name)}
+        </p>
+
+        <Image
+          url={pokemon.sprites.other.dream_world.front_default}
+          alt={pokemon.name}
+        />
+
         <Stats
           id={pokemon.id}
           height={pokemon.height}
           weight={pokemon.weight}
         />
+
+        <Moves moves={pokemon.moves} />
       </div>
     );
   }
