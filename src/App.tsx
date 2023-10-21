@@ -1,21 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { fetchPokemon } from './utils';
-import { Pokemon } from './types';
+import "./app.css";
 
-import InfoContainer from './components/InfoContainer';
+import React, { useEffect, useState } from "react";
 
-import './app.css';
+import { Pokemon } from "./types";
+import PokemonCard from "./components/PokemonCard";
+import { fetchPokemon } from "./utils";
 
 const App = () => {
-  const [pokemon, setPokemon] = useState<Pokemon>();
+  const [pokemons, setPokemons] = useState<Pokemon[]>();
 
   useEffect(() => {
-    fetchPokemon('bulbasaur').then((res) => setPokemon(res));
+    const pokemonNames = ["jigglypuff", "eevee", "squirtle"];
+
+    const fetchAllPokemons = pokemonNames.map((name) => fetchPokemon(name));
+
+    Promise.all(fetchAllPokemons)
+      .then((pokemon) => {
+        setPokemons(pokemon);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   return (
-    <div className='appRoot'>
-      <InfoContainer pokemon={pokemon} />
+    <div className="appRoot">
+      {pokemons?.map((pokemon) => (
+        <PokemonCard pokemon={pokemon} />
+      ))}
     </div>
   );
 };
