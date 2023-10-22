@@ -17,6 +17,19 @@ export interface Move {
   move: NameUrlPair;
 }
 
+export interface MoveStats {
+  id: number;
+  name: string;
+  flavor_text_entries: MoveDescription[];
+}
+
+export interface MoveDescription {
+  flavor_text: string;
+  version_group: {
+    name: string;
+  };
+}
+
 interface SimpleSprite {
   front_default: string;
 }
@@ -35,16 +48,11 @@ interface TypeOfPokemon {
 }
 
 export interface Pokemon {
-  abilities: Ability[];
   base_experience: number;
-  forms: NameUrlPair[];
   height: number;
-  held_items: Item[];
   id: number;
   moves: Move[];
   name: string;
-  species: NameUrlPair;
   sprites: Sprites;
-  types: TypeOfPokemon[];
   weight: number;
 }

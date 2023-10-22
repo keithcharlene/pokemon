@@ -3,13 +3,11 @@ import Moves from "./Moves";
 import { Pokemon } from "../types";
 import React from "react";
 import Stats from "./Stats";
+import { capitalizeFirstLetter } from "../utils";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
 }
-const capitalizeFirstLetter = (name: string) => {
-  return name[0].toUpperCase() + name.slice(1);
-};
 
 const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
   pokemon,
