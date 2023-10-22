@@ -3,14 +3,10 @@ export interface NameUrlPair {
   url: string;
 }
 
-interface Ability {
+export interface Ability {
   ability: NameUrlPair;
   is_hidden: boolean;
   slot: number;
-}
-
-interface Item {
-  item: NameUrlPair;
 }
 
 export interface Move {
@@ -43,11 +39,8 @@ interface OtherSprites {
   "official-artwork": SimpleSprite;
 }
 
-interface TypeOfPokemon {
-  type: NameUrlPair;
-}
-
 export interface Pokemon {
+  ability: Ability;
   base_experience: number;
   height: number;
   id: number;

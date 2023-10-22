@@ -6,23 +6,19 @@ interface StatsProps {
   weight: number;
 }
 
-const PokemonCard: React.FunctionComponent<StatsProps> = ({
-  id,
-  height,
-  weight,
-}) => {
+const Stats: React.FunctionComponent<StatsProps> = ({ id, height, weight }) => {
   return (
-    <div className="bg-orange-100 flex p-1 rounded-b-lg text-sm">
-      <div className="w-1/3">
+    <div className="flex flex-row bg-amber-100 text-center p-1 rounded-b-lg text-sm">
+      <div className="w-1/5 ml-2">
         <span className="font-semibold">ID:</span> {id}
       </div>
-      <div className="w-1/3">
-        <span className="font-semibold">Height:</span> {height}
+      <div className="w-2/5">
+        <span className="font-semibold">Height:</span> {height}dm
       </div>
-      <div className="w-1/3">
-        <span className="font-semibold">Weight:</span> {weight}
+      <div className="w-2/5">
+        <span className="font-semibold">Weight:</span> {weight}hg
       </div>
     </div>
   );
 };
-export default PokemonCard;
+export default Stats;

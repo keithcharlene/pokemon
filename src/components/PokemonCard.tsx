@@ -12,28 +12,19 @@ interface PokemonCardProps {
 const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
   pokemon,
 }) => {
-  if (pokemon) {
-    return (
-      <div className="pokemonCard bg-red-400 p-5 m-2 ">
-        <p className="text-2xl pb-2 font-semibold">
-          {capitalizeFirstLetter(pokemon.name)}
-        </p>
+  if (!pokemon) return <div>Pokemon not found</div>;
 
-        <Image
-          url={pokemon.sprites.other.dream_world.front_default}
-          alt={pokemon.name}
-        />
+  const { name, id, height, weight, moves, sprites } = pokemon;
 
-        <Stats
-          id={pokemon.id}
-          height={pokemon.height}
-          weight={pokemon.weight}
-        />
-
-        <Moves moves={pokemon.moves} />
+  return (
+    <div className="flex flex-col w-96 drop-shadow-lg border-8 border-amber-200 bg-emerald-300 p-5 m-5 rounded-lg">
+      <div className="text-2xl pb-2 italic text-center">
+        {capitalizeFirstLetter(name)}
       </div>
-    );
-  }
-  return null;
+      <Image url={sprites.other.dream_world.front_default} alt={name} />
+      <Stats id={id} height={height} weight={weight} />
+      <Moves moves={moves} />
+    </div>
+  );
 };
 export default PokemonCard;

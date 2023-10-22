@@ -7,7 +7,7 @@ interface ImageProps {
 
 const Image: React.FunctionComponent<ImageProps> = ({ url, alt }) => {
   return (
-    <div className="bg-stone-100 flex items-center justify-center p-5 rounded-t-lg">
+    <div className="flex justify-center border-2 border-amber-100 p-5 rounded-t-lg bg-gradient-to-br from-cyan-200 to-amber-100">
       <img src={url} alt={alt} className="justify-center h-40" />
     </div>
   );
