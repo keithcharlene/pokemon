@@ -13,10 +13,6 @@ export const fetchResource = async <T>(url: string): Promise<T> => {
   );
 };
 
-export const fetchPokemon = async (url: string) => fetchResource<Pokemon>(url);
-
-export const fetchMove = async (url: string) => fetchResource<MoveStats>(url);
-
 export const usePromiseAll = <T>(
   promises: Promise<T[]>,
   setFunction: (data: T[]) => void

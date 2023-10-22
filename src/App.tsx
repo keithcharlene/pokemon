@@ -1,6 +1,6 @@
 import "./app.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { fetchResource, usePromiseAll } from "./utils";
 
 import { Pokemon } from "./types";
@@ -19,11 +19,10 @@ const App = () => {
     "bulbasaur",
   ];
 
-  const fetchAllPokemons = pokemonNames.map((name) =>
-    fetchResource<Pokemon>(pokemonApi + name)
+  const fetchAllPokemons = Promise.all(
+    pokemonNames.map((name) => fetchResource<Pokemon>(pokemonApi + name))
   );
-
-  usePromiseAll(Promise.all(fetchAllPokemons), setPokemons);
+  usePromiseAll(fetchAllPokemons, setPokemons);
 
   return (
     <div className="flex flex-col pt-10 font-mono">
